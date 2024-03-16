@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:aop="http://www.springframework.org/schema/aop"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--第一种方式spring api-->
+    <!--注册bean-->
+<bean id="userService" class="com.pzhu.service.UserServiceImpl"/>
+    <bean id="annotationPointcut" class="com.pzhu.diy.AnnotationPointcut"/>
+    <aop:aspectj-autoproxy/>
+
+    <!--    <bean id="log" class="com.pzhu.log.Log"/>-->
+<!--    <bean id="afterLog" class="com.pzhu.log.AfterLog"/>-->
+<!--&lt;!&ndash;配置aop&ndash;&gt;-->
+<!--<aop:config>-->
+<!--&lt;!&ndash;    切入点（在哪里执行spring）&ndash;&gt;-->
+<!--    <aop:pointcut id="pointcut" expression="execution(* com.pzhu.service.UserServiceImpl.*(..))"/>-->
+<!--&lt;!&ndash;执行环绕增加&ndash;&gt;-->
+<!--<aop:advisor advice-ref="log" pointcut-ref="pointcut"></aop:advisor>-->
+<!--<aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"></aop:advisor>-->
+<!--</aop:config>-->
+
+<!--第二种方式aop标签实现-->
+<!--    <bean id="diy" class="com.pzhu.diy.DiyPointcut"/>-->
+<!--    &lt;!&ndash;aop的配置&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;第二种方式：使用AOP的标签实现&ndash;&gt;-->
+<!--        <aop:aspect ref="diy">-->
+<!--         <aop:pointcut id="diyPonitcut" expression="execution(* com.pzhu.service.UserServiceImpl.*(..))"/>-->
+<!--        <aop:before pointcut-ref="diyPonitcut" method="before"/>-->
+<!--        <aop:after pointcut-ref="diyPonitcut" method="after"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+
+</beans>
